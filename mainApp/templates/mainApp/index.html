@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TastefulRecipes - Home </title>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+</head>
+<body>
+<div class="container">
+        <div class="header">
+            <h1>Tasteful Recipes</h1>
+            <p>A place to share your recipes</p>
+        </div>
+<div>
+    <h2>Recipes</h2>
+    <p>Here are some of our recipes</p>
+<div id="recipes">
+        {% for r in recipes %}
+            <div class="recipe-card">
+            <h2>{{ r.name }}</h2>
+            <a href="{% url "recipe-details" r.recipe_id %}">More Details</a>
+            </div>
+    {% endfor %}
+
+</div>
+</div>
+</div>
+</body>
+</html>
