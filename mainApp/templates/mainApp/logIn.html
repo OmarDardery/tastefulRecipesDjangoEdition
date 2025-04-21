@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TastefulRecipes - Log in</title>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+</head>
+<body>
+    <div id="login">
+        <h1>Welcome Back To Tasteful Recipes! Please Log In.</h1>
+    <form method="post" action = '{% url "account" "login" %}'>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class = "input-container">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+        </div>
+        <br>
+        <div class = "input-container">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <button type="submit">Log in</button>
+    </form>
+    <a href="{% url 'signup' %}">Have no account yet? Sign Up!</a>
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+    </div>
+</body>
+</html>

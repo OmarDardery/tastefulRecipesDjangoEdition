@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TastefulRecipes - Home </title>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+</head>
+<body>
+    {% include "./blocks/header.html" %}
+    <div class="home-container">
+        <div id="recipes">
+                {% for r in recipes %}
+                    <div class="recipe-card">
+                        <h2>{{ r.name }}</h2>
+                        <hr>
+                        <a style="align-self: flex-end; justify-self: flex-end;" href="{% url "recipe-details" r.recipe_id %}">More Details</a>
+                    </div>
+            {% endfor %}
+        </div>
+        <button class="add-recipe-button" onclick="location.href='{% url 'add-recipe' %}'">
+            <div style="aspect-ratio: 1 / 1; height: auto; width: auto;">+</div>
+        </button>
+    </div>
+</body>
+</html>

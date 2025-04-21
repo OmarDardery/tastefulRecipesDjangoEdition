@@ -1,16 +1,113 @@
 body{
-
+    background-color: #f5f5f5;
 }
 #recipes{
     display: grid;
     grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    height: 85vh;
+    overflow-y: auto;
+    column-width: 150px;         /* Minimum width for each column */
+    column-gap: 20px;           /* Space between columns */
+    width: 100%;
+    background-color: #f5f5f5;
+
+}
+#login{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    columns: 300px;
-    height: 100vh;
+    height: 80vh;
+    gap: 5vh;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: fit-content;
+    width: clamp(250px, 75vw, 500px);
+    background-color: #f0f0f0;
+    padding: 20px;
+    padding-top: 45px;
+    border-radius: 17px;
 }
 .recipe-card{
-    width: 300px;
-    padding: 10px;
-    margin: 10px;
+    padding: 20px;
+    margin-top: 20px;
     border: 1px solid black;
+    break-inside: avoid;        /* Prevents recipes from breaking across columns */
+    margin-bottom: 20px;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+}
+label{
+    width: 100%;
+    text-align: left;
+
+}
+input{
+    width: 100%;
+    padding: 5px;
+    border-radius: 3px;
+    align-self: flex-start;
+}
+textarea{
+    width: 100%;
+    padding: 5px;
+    border-radius: 3px;
+    align-self: flex-start;
+}
+.input-container{
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    gap: 10px;
+}
+button{
+    padding: 10px;
+    border-radius: 3px;
+    background-color: #102E50;
+    color: #f5f5f5;
+    border: 1px solid black;
+    cursor: pointer;
+    justify-self: flex-end;
+    align-self: flex-end;
+    margin: 10px;
+    margin-top: 30px;
+}
+#header{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    height: 10vh;
+    padding: 10px;
+    background-color: #102E50;
+    color: #f5f5f5;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+.add-recipe-button{
+    border-radius: 50%;
+    background-color: #102E50;
+    color: #f5f5f5;
+    cursor: pointer;
+    justify-self: flex-end;
+    align-self: flex-end;
+    bottom: 0;
+    right: 0;
+    margin: 10px;
+    width: 7vh;
+    height: 7vh;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 6vh;
+    position: fixed;
 }

@@ -1,14 +1,19 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Tasteful Recipes - {{ recipe.title }}</title>
+  <title>TastefulRecipes - {{ recipe.title }}</title>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
 </head>
 <body>
-<h1>{{ recipe.name }}</h1>
-<p>Description: {{ recipe.description }}</p>
-<p>Preparation time: {{ recipe.preparation_time }} mins</p>
-<p>Ingredients: {{ recipe.ingredients }}</p>
-<p>Instructions: {{ recipe.instructions }}</p>
+<div style="margin-left: 12vw; margin-right: 12vw; margin-top: 5vh; height: fit-content;">
+    {% include "./blocks/header.html" %}
+    <h1>Name: {{ recipe.name }}</h1>
+    <p>Description: {{ recipe.description }}</p>
+    <p>Preparation time: {{ recipe.preparation_time }} mins</p>
+    <p>Ingredients: {{ recipe.ingredients }}</p>
+    <p>Instructions: {{ recipe.instructions }}</p>
+</div>
 </body>
 </html>

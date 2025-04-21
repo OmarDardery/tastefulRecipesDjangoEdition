@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-qt7*@c&-7z85)j6=+qmpe#%=fvu0azqq_hs^43&(d!9=q0-e=(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['tastefulrecipesdjangoedition.onrender.com']
+ALLOWED_HOSTS = ["tastefulrecipesdjangoedition.onrender.com"]
 
 
 # Application definition
@@ -130,3 +130,4 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+AUTH_USER_MODEL = 'mainApp.MyUsers'
