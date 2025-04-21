@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: your-app-name
+    env: python
+    buildCommand: ./build.sh
+    startCommand: gunicorn your_project.wsgi:application
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.x.x  # Replace with your Python version
+      - key: DATABASE_URL
+        value: your-database-url  # Will be added via Render dashboard
+      - key: SECRET_KEY
+        value: your-secret-key    # Will be added via Render dashboard
