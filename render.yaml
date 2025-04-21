@@ -4,6 +4,7 @@ services:
     env: python
     buildCommand: ./build.sh
     startCommand: gunicorn your_project.wsgi:application
+    staticPublishPath: ./staticfiles
     envVars:
       - key: PYTHON_VERSION
         value: 3.x.x  # Replace with your Python version
