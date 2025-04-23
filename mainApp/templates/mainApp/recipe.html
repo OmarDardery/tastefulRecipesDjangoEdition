@@ -7,13 +7,14 @@
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
 </head>
 <body>
-<div style="margin-left: 12vw; margin-right: 12vw; margin-top: 5vh; height: fit-content;">
+<div style="margin-left: 12vw; margin-right: 12vw; margin-top: 5vh; height: fit-content; display: flex; flex-direction: column;">
     {% include "./blocks/header.html" %}
+    <img src=" {{ recipe.images.url }} " alt="Recipe Image" style="max-height: 35vh; height: auto; align-self: center;">
     <h1>Name: {{ recipe.name }}</h1>
-    <p>Description: {{ recipe.description }}</p>
+    <p>Description:<br>{{ recipe.description }}</p>
     <p>Preparation time: {{ recipe.preparation_time }} mins</p>
-    <p>Ingredients: {{ recipe.ingredients }}</p>
-    <p>Instructions: {{ recipe.instructions }}</p>
+    <p>Ingredients:<br> {{ recipe.ingredients }}</p>
+    <p>Instructions:<br> {{ recipe.instructions }}</p>
 </div>
 </body>
 </html>

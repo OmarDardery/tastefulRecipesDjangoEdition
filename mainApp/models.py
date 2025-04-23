@@ -12,6 +12,7 @@ class Recipes(models.Model):
     preparation_time = models.IntegerField()
     ingredients = models.TextField()
     instructions = models.TextField()
+    images = models.ImageField(upload_to='images/', default="images/default.jpg")
 
 
 class MyUsers(AbstractUser):

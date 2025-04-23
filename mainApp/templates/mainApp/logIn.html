@@ -21,6 +21,19 @@
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" required>
         </div>
+        <div id = "continue-container">
+
+            {% if usernames  %}
+                <label>Continue as:</label>
+                <div id="continue-options">
+                    {% for username in usernames %}
+                        <div class="continue-option">
+                            <a href="{% url "continue-as" username %}">{{ username }}</a>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
         <button type="submit">Log in</button>
     </form>
     <a href="{% url 'signup' %}">Have no account yet? Sign Up!</a>

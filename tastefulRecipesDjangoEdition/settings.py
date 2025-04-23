@@ -27,7 +27,6 @@ DEBUG = False
 
 ALLOWED_HOSTS = ["tastefulrecipesdjangoedition.onrender.com"]
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -131,3 +130,6 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'mainApp.MyUsers'
+
+MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_URL = '/files/'

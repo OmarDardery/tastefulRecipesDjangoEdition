@@ -10,4 +10,5 @@ urlpatterns = [
     path("home", views.home, name="home"),
     path("add-recipe", views.add_recipe, name="add-recipe"),
     path("add-recipe-action", views.add_recipe_action, name="add-recipe-action"),
+    path("continue-as/<str:username>", views.continueAs, name="continue-as"),
 ]
