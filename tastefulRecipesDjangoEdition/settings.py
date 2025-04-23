@@ -9,9 +9,11 @@ https://docs.djangoproject.com/en/5.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
-
+import dj_database_url
 from pathlib import Path
 import os
+from dotenv import load_dotenv
+load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -26,7 +28,7 @@ SECRET_KEY = 'django-insecure-qt7*@c&-7z85)j6=+qmpe#%=fvu0azqq_hs^43&(d!9=q0-e=(
 DEBUG = False
 
 ALLOWED_HOSTS = ["tastefulrecipesdjangoedition.onrender.com"]
-
+#ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
@@ -78,12 +80,13 @@ WSGI_APPLICATION = 'tastefulRecipesDjangoEdition.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.config(
+        default=os.environ.get('DATABASE_URL'),
+        conn_max_age=600,
+        conn_health_checks=True,
+        engine='django.db.backends.postgresql',
+    )
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
