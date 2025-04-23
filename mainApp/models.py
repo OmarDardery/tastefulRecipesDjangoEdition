@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-
+from cloudinary.models import CloudinaryField
 import uuid
 
 # Create your models here.
@@ -12,7 +12,7 @@ class Recipes(models.Model):
     preparation_time = models.IntegerField()
     ingredients = models.TextField()
     instructions = models.TextField()
-    images = models.ImageField(upload_to='images/', default="images/default.jpg")
+    images = CloudinaryField('image', null=True, blank=True)
 
 
 class MyUsers(AbstractUser):

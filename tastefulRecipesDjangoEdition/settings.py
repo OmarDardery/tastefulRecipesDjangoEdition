@@ -16,7 +16,9 @@ from dotenv import load_dotenv
 load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
@@ -38,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.admin',
+    'cloudinary_storage',
+    'cloudinary',
     'mainApp'
 ]
 
@@ -136,3 +140,10 @@ AUTH_USER_MODEL = 'mainApp.MyUsers'
 
 MEDIA_ROOT = BASE_DIR / 'media'
 MEDIA_URL = '/files/'
+
+cloudinary.config(
+    cloud_url=os.getenv('CLOUDINARY_URL')
+)
+
+# Configure default file storage
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
