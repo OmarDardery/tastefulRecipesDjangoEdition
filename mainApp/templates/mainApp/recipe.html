@@ -11,6 +11,7 @@
     {% include "./blocks/header.html" %}
     <img src=" {{ recipe.images.url }} " alt="Recipe Image" style="max-height: 35vh; height: auto; align-self: center;">
     <h1>Name: {{ recipe.name }}</h1>
+    <h2>Create By: {{ user.username }}</h2>
     <p>Description:<br>{{ recipe.description }}</p>
     <p>Preparation time: {{ recipe.preparation_time }} mins</p>
     <p>Ingredients:<br> {{ recipe.ingredients }}</p>

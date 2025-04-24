@@ -33,17 +33,7 @@ form{
     padding-top: 45px;
     border-radius: 17px;
 }
-.recipe-card{
-    padding: 20px;
-    margin-top: 20px;
-    border: 1px solid black;
-    break-inside: avoid;        /* Prevents recipes from breaking across columns */
-    margin-bottom: 20px;
-    border-radius: 30px;
-    display: flex;
-    flex-direction: column;
-    height: fit-content;
-}
+
 label{
     width: 100%;
     text-align: left;
@@ -67,7 +57,7 @@ textarea{
     width: 70%;
     gap: 10px;
 }
-button{
+.form-button{
     padding: 10px;
     border-radius: 3px;
     background-color: #102E50;
@@ -143,3 +133,4 @@ button{
     color: #e0e0e0;
     text-decoration: none;
 }
+

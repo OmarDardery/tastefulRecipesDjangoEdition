@@ -5,22 +5,158 @@
     <meta charset="UTF-8">
     <title>TastefulRecipes - Home </title>
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <style>
+        .cta {
+          border: none;
+          background: none;
+          cursor: pointer;
+            position: absolute;
+            bottom: 2px;
+            right: 2px;
+            margin: 7px;
+        }
+
+        .cta span {
+          padding-bottom: 7px;
+          letter-spacing: 4px;
+          font-size: 14px;
+          padding-right: 15px;
+          text-transform: uppercase;
+        }
+
+        .cta svg {
+          transform: translateX(-8px);
+          transition: all 0.3s ease;
+        }
+
+        .cta:hover svg {
+          transform: translateX(0);
+        }
+
+        .cta:active svg {
+          transform: scale(0.9);
+        }
+
+        .hover-underline-animation {
+          position: relative;
+          color: black;
+          padding-bottom: 20px;
+        }
+
+        .hover-underline-animation:after {
+          content: "";
+          position: absolute;
+          width: 100%;
+          transform: scaleX(0);
+          height: 2px;
+          bottom: 0;
+          left: 0;
+          background-color: #000000;
+          transform-origin: bottom right;
+          transition: transform 0.25s ease-out;
+        }
+
+        .cta:hover .hover-underline-animation:after {
+          transform: scaleX(1);
+          transform-origin: bottom left;
+        }
+        .recipe-card {
+            display: flex;
+            height: fit-content;
+            flex-direction: row;
+            position: relative;
+            padding: 20px;
+            margin-top: 20px;
+            border: 1px solid black;
+            break-inside: avoid;        /* Prevents recipes from breaking across columns */
+            margin-bottom: 20px;
+            border-radius: 30px;
+        }
+
+        .recipe-card img{
+            width: 40%;
+            height: auto;
+            z-index: 0;
+            border-radius: 10px;
+            object-fit: contain;
+            display: block;
+        }
+        @media (max-width: 600px) {
+            .description{
+                display: none;
+            }
+            .cta{
+                display: none;
+            }
+            .recipe-card{
+                cursor: pointer;
+            }
+        }
+        @media (max-width: 768px) {
+            .recipe-card {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .recipe-card img {
+                width: 100%;
+                height: auto;
+                display: block;
+            }
+            .recipe-card div {
+                width: 100%;
+            }
+
+        }
+    </style>
 </head>
 <body>
     {% include "./blocks/header.html" %}
     <div class="home-container">
         <div id="recipes">
                 {% for r in recipes %}
-                    <div class="recipe-card">
-                        <h2>{{ r.name }}</h2>
-                        <hr>
-                        <a style="align-self: flex-end; justify-self: flex-end;" href="{% url "recipe-details" r.recipe_id %}">More Details</a>
+                    <div class="recipe-card" data-url="{% url 'recipe-details' r.recipe_id %}">
+                        <img src="{{ r.images.url }}" alt="Recipe Image">
+                        <div style="height: 100%; width: 1px; background-color: black; margin: 0 10px;"></div>
+                        <div>
+                            <h2>{{ r.name }}</h2>
+                            <p>⏱︎ {{ r.preparation_time }} mins</p>
+                            <h3>Created By: {{ r.user.username }}</h3>
+                            <p class="description">{{ r.description }}</p>
+                            <br>
+                            <button class="cta" onclick="location.href='{% url 'recipe-details' r.recipe_id %}'">
+                              <span class="hover-underline-animation"> Details </span>
+                              <svg
+                                id="arrow-horizontal"
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="30"
+                                height="10"
+                                viewBox="0 0 46 16"
+                              >
+                                <path
+                                  id="Path_10"
+                                  data-name="Path 10"
+                                  d="M8,0,6.545,1.455l5.506,5.506H-30V9.039H12.052L6.545,14.545,8,16l8-8Z"
+                                  transform="translate(30)"
+                                ></path>
+                              </svg>
+                            </button>
+                        </div>
                     </div>
             {% endfor %}
         </div>
-        <button class="add-recipe-button" onclick="location.href='{% url 'add-recipe' %}'">
+        <button class="add-recipe-button form-button" onclick="location.href='{% url 'add-recipe' %}'">
             <div style="aspect-ratio: 1 / 1; height: auto; width: auto;">+</div>
         </button>
     </div>
+<script>
+    // Add click event listener to each recipe card
+    const recipeCards = document.querySelectorAll('.recipe-card');
+    recipeCards.forEach(card => {
+        card.addEventListener('click', () => {
+            window.location.href = card.getAttribute('data-url');
+        });
+    });
+</script>
 </body>
 </html>

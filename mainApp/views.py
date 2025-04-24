@@ -13,8 +13,10 @@ def index(request):
 
 def recipe_details(request, recipe_id):
     recipe = get_object_or_404(Recipes, recipe_id=recipe_id)
+    user = get_object_or_404(MyUsers, user_id=recipe.createdBy)
     return render(request, "mainApp/recipe.html", {
         "recipe": recipe,
+        "user": user,
     })
 
 
@@ -22,6 +24,9 @@ def recipe_details(request, recipe_id):
 def home(request):
     # Fetch all recipes from the database
     recipes = Recipes.objects.all()
+    for r in recipes:
+        user = MyUsers.objects.get(user_id=r.createdBy)
+        r.user = user
     return render(request, "mainApp/home.html", {
         "recipes": recipes,
     })
@@ -180,6 +185,7 @@ def add_recipe_action(request):
                 preparation_time=int(request.POST.get('preparation_time')),
                 ingredients=request.POST.get('ingredients'),
                 instructions=request.POST.get('instructions'),
+                images="media/images/default.png" # No image provided
             )
         return redirect('recipe-details', recipe_id=recipe.recipe_id)
 

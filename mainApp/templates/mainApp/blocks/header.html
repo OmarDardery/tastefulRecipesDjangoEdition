@@ -4,12 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Luxurious+Script&display=swap" rel="stylesheet">
 </head>
 <body>
     <div id="header">
-        <h1><span style="cursor: pointer;" onclick="location.href='{% url 'home' %}'">TastefulRecipes</span></h1>
+        <h1><span style="cursor: pointer; z-index: 5" onclick="location.href='{% url 'home' %}'">Tasteful<span style="font-family: 'Luxurious Script', cursive;font-weight: 400;font-style: normal;">Recipes</span></span></h1>
     </div>
-    <div style="height: 10vh; width: 100%;">
+    <div style="height: 13vh; width: 100%;">
 
     </div>
 </body>

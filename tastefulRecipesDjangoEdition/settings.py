@@ -27,10 +27,10 @@ import cloudinary.api
 SECRET_KEY = 'django-insecure-qt7*@c&-7z85)j6=+qmpe#%=fvu0azqq_hs^43&(d!9=q0-e=('
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ["tastefulrecipesdjangoedition.onrender.com"]
-#ALLOWED_HOSTS = []
+#ALLOWED_HOSTS = ["tastefulrecipesdjangoedition.onrender.com"]
+ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
