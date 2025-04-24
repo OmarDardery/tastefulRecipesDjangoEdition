@@ -81,6 +81,9 @@ textarea{
     top: 0;
     left: 0;
     width: 100%;
+    font-size: 5em;
+    justify-content: center;
+    align-items: center;
 }
 .add-recipe-button{
     border-radius: 50%;
