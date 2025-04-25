@@ -24,7 +24,6 @@ def recipe_details(request, recipe_id):
 
 @login_required(login_url='login')
 def home(request):
-    # Fetch all recipes from the database
     recipes = Recipes.objects.select_related('createdBy').all()
 
     return render(request, "mainApp/home.html", {
@@ -62,19 +61,16 @@ def logIn(request):
         'usernames': verified_usernames
     })
 def continueAs(request, username):
-    # Get stored signatures
     stored_usernames = request.COOKIES.get('trdjusernames', '').split(',')
     stored_signatures = request.COOKIES.get('trdj_signatures', '').split(',')
     if username not in stored_usernames:
         return HttpResponseForbidden("Username not found in stored credentials")
     signer = TimestampSigner()
 
-    # Find the signature for this username
     try:
         idx = stored_usernames.index(username)
         signature = stored_signatures[idx]
 
-        # Verify signature and check if it's not older than 7 days
         try:
             verified_username = signer.unsign(signature, max_age=7 * 24 * 60 * 60)
             if verified_username == username:
