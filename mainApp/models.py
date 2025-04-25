@@ -7,7 +7,7 @@ import uuid
 class Recipes(models.Model):
     recipe_id = models.SlugField(primary_key=True)
     name = models.CharField(max_length=100)
-    createdBy = models.UUIDField(editable=False, default=123)
+    createdBy = models.ForeignKey('MyUsers', on_delete=models.SET("[Deleted User]"))
     description = models.TextField()
     preparation_time = models.IntegerField()
     ingredients = models.TextField()

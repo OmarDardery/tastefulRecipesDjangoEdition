@@ -12,21 +12,21 @@ def index(request):
     return redirect("login")
 
 def recipe_details(request, recipe_id):
-    recipe = get_object_or_404(Recipes, recipe_id=recipe_id)
-    user = get_object_or_404(MyUsers, user_id=recipe.createdBy)
+    recipe = get_object_or_404(
+        Recipes.objects.select_related('createdBy'),
+        recipe_id=recipe_id
+    )
+
     return render(request, "mainApp/recipe.html", {
         "recipe": recipe,
-        "user": user,
     })
 
 
 @login_required(login_url='login')
 def home(request):
     # Fetch all recipes from the database
-    recipes = Recipes.objects.all()
-    for r in recipes:
-        user = MyUsers.objects.get(user_id=r.createdBy)
-        r.user = user
+    recipes = Recipes.objects.select_related('createdBy').all()
+
     return render(request, "mainApp/home.html", {
         "recipes": recipes,
     })

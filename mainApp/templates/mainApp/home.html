@@ -20,7 +20,7 @@
                         <div>
                             <h2>{{ r.name }}</h2>
                             <p>⏱︎ {{ r.preparation_time }} mins</p>
-                            <h3>Created By: {{ r.user.username }}</h3>
+                            <h3>Created By: {{ r.createdBy.username }}</h3>
                             <p class="description">{{ r.description }}</p>
                             <br>
                             <button class="cta" onclick="location.href='{% url 'recipe-details' r.recipe_id %}'">
